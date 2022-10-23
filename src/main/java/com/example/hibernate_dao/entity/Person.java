@@ -36,7 +36,7 @@ public class Person {
     @EmbeddedId
     private PersonWithNameAndAge person;
 
-    private String phone_number;
+    private String phoneNumber;
 
-    private String city_of_living;
+    private String cityOfLiving;
 }

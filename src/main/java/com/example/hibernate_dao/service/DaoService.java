@@ -27,21 +27,22 @@ public class DaoService {
                         .name(names.get(new Random().nextInt(names.size())))
                         .surname(surnames.get(new Random().nextInt(surnames.size())))
                         .age(new Random().nextInt(1, 100)).build())
-                .city_of_living(cities.get(new Random().nextInt(cities.size())))
-                .phone_number("+" + p + "1234" + new Random().nextInt(999_999, 2_000_000))
+                .cityOfLiving(cities.get(new Random().nextInt(cities.size())))
+                .phoneNumber("+" + p + "1234" + new Random().nextInt(999_999, 2_000_000))
                 .build()));
     }
 
     public List<Person> findByCity(String city) {
-        return personRepository.findByCity(city);
+        return personRepository.findByCityOfLiving(city);
     }
 
     public List<Person> findByAgeLessThan(int age) {
-        return personRepository.findByAgeLessThan(age);
+        return personRepository.findByPersonAgeLessThan(age);
     }
 
     public List<Optional<Person>> findByNameAndSurname(String name, String surname) {
-        List<Optional<Person>> persons = personRepository.findByNameAndSurname(name, surname);
+        List<Optional<Person>> persons = personRepository.findByPersonNameAndPersonSurname(name,
+                surname);
         if (persons.isEmpty()) {
             throw new NotFoundException("Ни одной записи не найдено!");
         }
