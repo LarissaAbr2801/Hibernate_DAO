@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/persons")
 public class DaoController {
 
     private final DaoService daoService;
@@ -20,17 +20,17 @@ public class DaoController {
         this.daoService = daoService;
     }
 
-    @GetMapping("persons/by-city")
+    @GetMapping("/by-city")
     public List<Person> finsPersonsByCity(@RequestParam String city) {
         return daoService.findByCity(city);
     }
 
-    @GetMapping("persons/by-age")
+    @GetMapping("/by-age")
     public List<Person> findPersonsByAge(@RequestParam int age) {
         return daoService.findByAgeLessThan(age);
     }
 
-    @GetMapping("persons/by-nameAndSurname")
+    @GetMapping("/by-nameAndSurname")
     public List<Optional<Person>> findPersonByNameAndSurname(@RequestParam String name,
                                                        @RequestParam String surname) {
         return daoService.findByNameAndSurname(name, surname);
